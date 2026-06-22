@@ -1,60 +1,84 @@
-<div style="background-color: #e60000; padding: 12px; overflow: hidden;">
+<!DOCTYPE html>
+<html lang="id" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <!-- TAG UTAMA UNTUK FIX MOBILE FRIENDLY -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merdeka Saham</title>
     <style>
-        @keyframes blinker {
-            50% { opacity: 0.1; }
-        }
-        /* Animasi untuk tombol CTA utama (tetap menggunakan bayangan) */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        @keyframes blinker { 50% { opacity: 0.1; } }
         @keyframes pulse {
             0% { transform: scale(1); box-shadow: 0 4px 15px rgba(230, 0, 0, 0.5); }
             50% { transform: scale(1.03); box-shadow: 0 6px 22px rgba(230, 0, 0, 0.7); }
             100% { transform: scale(1); box-shadow: 0 4px 15px rgba(230, 0, 0, 0.5); }
         }
-        /* Animasi khusus teks harga (hanya merubah ukuran secara halus & natural) */
         @keyframes pulse-text {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
+        
+        /* RESPONSIVE TABLE FOR MOBILE */
+        @media screen and (max-width: 600px) {
+            .responsive-table table, .responsive-table thead, .responsive-table tbody, .responsive-table th, .responsive-table td, .responsive-table tr { 
+                display: block; 
+            }
+            .responsive-table thead tr { position: absolute; top: -9999px; left: -9999px; }
+            .responsive-table tr { border: 1px solid #333; margin-bottom: 10px; padding: 5px; background: #fff!important; }
+            .responsive-table td { border: none; position: relative; padding-left: 45%!important; text-align: left!important; }
+            .responsive-table td:before { 
+                position: absolute; top: 15px; left: 15px; width: 40%; padding-right: 10px; 
+                white-space: nowrap; font-weight: bold; color: #111;
+            }
+            .responsive-table td:nth-of-type(1):before { content: "Mentor / Kelas"; }
+            .responsive-table td:nth-of-type(2):before { content: "Harga Asli"; }
+            .responsive-table td:nth-of-type(3):before { content: "Isi Materi"; }
+            .total-value-box { flex-direction: column; gap: 10px; text-align: center; }
+        }
     </style>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #111111;">
+
+<div style="background-color: #e60000; padding: 12px; overflow: hidden;">
     <marquee scrollamount="6" behavior="scroll" direction="left" style="color: #ffffff; text-align: center; font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; letter-spacing: 1px; line-height: 1.25; display: block; animation: blinker 1.2s linear infinite;">
         🚨 PERINGATAN: HALAMAN INI BISA DIHAPUS KAPAN SAJA JIKA MENDAPAT TEKANAN DARI PIHAK LUAR. AMANKAN AKSES ANDA SEKARANG. 🚨
     </marquee>
 </div>
 
-<section style="background-color: #111111; color: #ffffff; padding: 60px 20px; text-align: center; font-family: Arial, sans-serif;">
+<section style="background-color: #111111; color: #ffffff; padding: 60px 20px; text-align: center;">
     <div style="max-width: 800px; margin: 0 auto;">
-        <h1 style="font-size: 36px; font-weight: 800; line-height: 1.25; color: #ffffff; margin-bottom: 25px;">
+        <h1 style="font-size: clamp(24px, 5vw, 36px); font-weight: 800; line-height: 1.25; color: #ffffff; margin-bottom: 25px;">
             ILMU UNTUK KAYA ADALAH HAK SEMUA ORANG. KITA DIPAKSA MISKIN HANYA KARENA <span style="color: #e60000;">AKSES INFORMASI YANG MAHAL!</span>
         </h1>
         
-        <p style="font-size: 16px; line-height: 1.35; color: #cccccc; margin-bottom: 40px; text-align: center;">
+        <p style="font-size: clamp(14px, 3.5vw, 16px); line-height: 1.4; color: #cccccc; margin-bottom: 40px; text-align: center;">
             Selamat datang di Merdeka Saham. Sebuah gerakan perlawanan terhadap monopoli informasi finansial. Kami membeli belasan kelas master trader top Indonesia seharga puluhan juta satu per satu, lalu menyatukannya ke dalam satu database terpusat dengan harga yang masuk akal untuk kantong rakyat.
         </p>
 
         <!-- HERO IMAGE IMPLEMENTATION -->
         <div style="width: 100%; max-width: 800px; margin: 0 auto 40px auto;">
-            <img src="heroimage.png" alt="7 Database Mentorship Saham Terbesar di Indonesia" style="width: 100%; height: auto; display: block; border-radius: 6px;">
+            <img src="heroimage.png" alt="7 Database Mentorship Saham Terbesar di Indonesia" style="width: 100%; max-width: 100%; height: auto; display: block; border-radius: 6px;">
         </div>
 
-        <p style="font-size: 15px; line-height: 1.35; color: #dddddd; background-color: #161616; border-left: 4px solid #e60000; padding: 20px; text-align: left; margin-bottom: 40px; border-radius: 0 4px 4px 0;">
+        <p style="font-size: clamp(13px, 3.5vw, 15px); line-height: 1.4; color: #dddddd; background-color: #161616; border-left: 4px solid #e60000; padding: 20px; text-align: left; margin-bottom: 40px; border-radius: 0 4px 4px 0;">
             Ini adalah 1 Link Akses Cloud (Google Drive Share) Terpusat yang berisi ratusan video materi HD, draf modul, dan kalkulator trading dari 7 mentorship saham termahal di Indonesia (Andry Hakim, Hengky Adinata, David Noah, Bennix, dll). Semua file sudah dirapikan per folder, bisa ditonton kapan saja, dan mendapatkan update berkala gratis seumur hidup.
         </p>
 
-        <html style="scroll-behavior: smooth;"></html>
-        <a href="#checkout" style="display: inline-block; background-color: #e60000; color: #ffffff; text-decoration: none; padding: 18px 35px; font-size: 18px; font-weight: bold; border-radius: 4px; box-shadow: 0 4px 15px rgba(230, 0, 0, 0.4); text-transform: uppercase;">
+        <a href="#checkout" style="display: inline-block; background-color: #e60000; color: #ffffff; text-decoration: none; padding: 18px 35px; font-size: clamp(15px, 4vw, 18px); font-weight: bold; border-radius: 4px; box-shadow: 0 4px 15px rgba(230, 0, 0, 0.4); text-transform: uppercase; width: 100%; max-width: 400px;">
             AMANKAN AKSES SEKARANG
         </a>
     </div>
 </section>
 
-<section style="background-color: #f9f9f9; color: #222222; padding: 60px 20px; font-family: Arial, sans-serif;">
+<section style="background-color: #f9f9f9; color: #222222; padding: 60px 20px;">
     <div style="max-width: 800px; margin: 0 auto;">
-        <h2 style="font-size: 28px; font-weight: 800; line-height: 1.25; text-align: center; margin-bottom: 35px; color: #111111;">
+        <h2 style="font-size: clamp(20px, 4.5vw, 28px); font-weight: 800; line-height: 1.25; text-align: center; margin-bottom: 35px; color: #111111;">
             Kenapa Akses Informasi Finansial yang Mengubah Hidup Selalu Dibatasi dengan Harga Mahal?
         </h2>
         
         <p style="font-size: 16px; line-height: 1.35; margin-bottom: 30px; text-align: center; font-weight: bold; color: #555555;">
-            sadar atau tidak, sistem ini sengaja dibuat tidak adil.
+            Sadar atau tidak, sistem ini sengaja dibuat tidak adil.
         </p>
 
         <div style="background-color: #ffffff; border: 1px solid #e0e0e0; padding: 20px; margin-bottom: 20px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
@@ -74,31 +98,31 @@
     </div>
 </section>
 
-<section style="background-color: #111111; color: #ffffff; padding: 60px 20px; font-family: Arial, sans-serif; text-align: center;">
+<section style="background-color: #111111; color: #ffffff; padding: 60px 20px; text-align: center;">
     <div style="max-width: 750px; margin: 0 auto;">
-        <h2 style="font-size: 26px; font-weight: 800; line-height: 1.25; color: #e60000; margin-bottom: 35px;">
+        <h2 style="font-size: clamp(18px, 4.5vw, 26px); font-weight: 800; line-height: 1.25; color: #e60000; margin-bottom: 35px;">
             "Saya Membeli Semua Kelas Mahal Ini Satu per Satu Menggunakan Uang Saya Sendiri, Agar Anda Tidak Perlu Bangkrut Duluan."
         </h2>
         
-        <div style="font-style: italic; font-size: 16px; line-height: 1.4; color: #dddddd; text-align: justify; border-left: 4px solid #e60000; padding-left: 20px;">
-            "Saya pernah berada di posisi Anda. Bingung, frustrasi, and merasa dunia ini tidak adil karena ilmu untuk merdeka secara finansial sengaja dipagari oleh harga tinggi.<br><br>
+        <div style="font-style: italic; font-size: clamp(14px, 3.5vw, 16px); line-height: 1.4; color: #dddddd; text-align: justify; border-left: 4px solid #e60000; padding-left: 20px;">
+            "Saya pernah berada di posisi Anda. Bingung, frustrasi, dan merasa dunia ini tidak adil karena ilmu untuk merdeka secara finansial sengaja dipagari oleh harga tinggi.<br><br>
             Itulah alasan kenapa saya mengorbankan modal saya sendiri untuk mengumpulkan, merapikan, dan menyatukan seluruh kurikulum master trader papan atas Indonesia ke dalam satu database terpusat.<br><br>
             Ini adalah gerakan perlawanan agar knowledge mahal bisa diakses oleh semua lapisan masyarakat, bahkan yang bergaji UMR sekalipun! Saya muak melihat banyak orang pintar dan pekerja keras tetap miskin hanya karena mereka tidak punya akses ke strategi aslinya. Hari ini, saya serahkan kuncinya kepada Anda."
         </div>
     </div>
 </section>
 
-<section style="background-color: #ffffff; color: #222222; padding: 60px 20px; font-family: Arial, sans-serif;">
+<section style="background-color: #ffffff; color: #222222; padding: 60px 20px;">
     <div style="max-width: 850px; margin: 0 auto;">
-        <h2 style="font-size: 26px; font-weight: 800; line-height: 1.25; text-align: center; margin-bottom: 35px; color: #111111;">
+        <h2 style="font-size: clamp(20px, 4.5vw, 26px); font-weight: 800; line-height: 1.25; text-align: center; margin-bottom: 35px; color: #111111;">
             Apa Saja Kurikulum Senilai Puluhan Juta yang Akan Anda Dapatkan Hari Ini?
         </h2>
         
         <p style="font-size: 15px; line-height: 1.35; color: #555555; text-align: center; margin-bottom: 30px;">
-            kami telah menyusun dan mengelompokkan 7 Database Mentorship Saham Terbesar di Indonesia ke dalam folder yang rapi, dengan video kualitas HD, draf materi, dan kalkulator eksklusif:
+            Kami telah menyusun dan mengelompokkan 7 Database Mentorship Saham Terbesar di Indonesia ke dalam folder yang rapi, dengan video kualitas HD, draf materi, dan kalkulator eksklusif:
         </p>
 
-        <div style="overflow-x: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 6px;">
+        <div class="responsive-table" style="width: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 6px;">
             <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px;">
                 <thead>
                     <tr style="background-color: #111111; color: #ffffff; border-bottom: 2px solid #e60000;">
@@ -144,13 +168,12 @@
                         <td style="padding: 15px; line-height: 1.35; color: #444444;">Manajemen emosi saat <em>market crash</em>, analisis teknikal praktis untuk pemula, dan <em>trading plan</em> harian.</td>
                     </tr>
                     <tr style="background-color: #fff5f5; font-weight: bold; font-size: 15px;">
-                        <td colspan="2" style="padding: 12px;">
-                            <div style="border: 3px solid #e60000; padding: 10px; display: flex; justify-content: space-between; align-items: center; background-color: #ffffff; border-radius: 4px; animation: blinker 1s linear infinite;">
-                                <span style="color: #e60000;">TOTAL VALUE</span>
-                                <span style="color: #e60000; font-size: 18px; font-weight: 900;">Rp 69.400.000</span>
+                        <td colspan="3" style="padding: 12px;">
+                            <div class="total-value-box" style="border: 3px solid #e60000; padding: 15px; display: flex; justify-content: space-between; align-items: center; background-color: #ffffff; border-radius: 4px; animation: blinker 1s linear infinite;">
+                                <span style="color: #e60000; font-weight: 900;">TOTAL VALUE</span>
+                                <span style="color: #e60000; font-size: 22px; font-weight: 900;">Rp 69.400.000</span>
                             </div>
                         </td>
-                        <td style="padding: 18px; color: #222222; font-size: 13px;">Seluruh materi di atas dapat Anda akses Sekarang, lengkap dengan update berkala gratis.</td>
                     </tr>
                 </tbody>
             </table>
@@ -158,15 +181,15 @@
     </div>
 </section>
 
-<section id="checkout" style="background-color: #111111; color: #ffffff; padding: 70px 20px; font-family: Arial, sans-serif; text-align: center; border-top: 1px solid #222222;">
+<section id="checkout" style="background-color: #111111; color: #ffffff; padding: 70px 20px; text-align: center; border-top: 1px solid #222222;">
     <div style="max-width: 700px; margin: 0 auto;">
         
-        <h2 style="font-size: 26px; font-weight: 800; line-height: 1.25; margin-bottom: 25px; color: #ffffff;">
+        <h2 style="font-size: clamp(20px, 4.5vw, 26px); font-weight: 800; line-height: 1.25; margin-bottom: 25px; color: #ffffff;">
             Investasi Kecil untuk Perubahan Hidup Terbesar Anda
         </h2>
 
         <div style="position: relative; border: 1.5px solid #e60000; background-color: #161616; padding: 25px 20px; border-radius: 6px; margin: 45px auto 35px auto; max-width: 650px;">
-            <div style="position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background-color: #e60000; color: #ffffff; font-size: 11px; font-weight: bold; letter-spacing: 1.5px; padding: 4px 14px; border-radius: 20px; text-transform: uppercase; box-shadow: 0 2px 8px rgba(230, 0, 0, 0.4); display: flex; align-items: center; gap: 4px;">
+            <div style="position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background-color: #e60000; color: #ffffff; font-size: 11px; font-weight: bold; letter-spacing: 1.5px; padding: 4px 14px; border-radius: 20px; text-transform: uppercase; box-shadow: 0 2px 8px rgba(230, 0, 0, 0.4);">
                 ⚡ PERINGATAN
             </div>
             <p style="color: #ffffff; font-weight: bold; font-size: 14px; letter-spacing: 0.5px; line-height: 1.45; margin: 0;">
@@ -175,24 +198,27 @@
         </div>
         
         <p style="font-size: 15px; line-height: 1.4; color: #cccccc; margin-bottom: 40px; text-align: justify;">
-            Jika Anda sudah mapan or punya uang puluhan juta untuk dibuang, silakan beli kelas aslinya. Tempat ini adalah library rahasia bagi para petarung jalanan yang ingin merdeka menggunakan ilmu para master dengan modal minim.
+            Jika Anda sudah mapan atau punya uang puluhan juta untuk dibuang, silakan beli kelas aslinya. Tempat ini adalah library rahasia bagi para petarung jalanan yang ingin merdeka menggunakan ilmu para master dengan modal minim.
         </p>
 
         <div style="background-color: #1a1a1a; border: 1px solid #333333; padding: 35px 25px; border-radius: 8px; margin-bottom: 35px; text-align: center;">
-            <span style="font-size: 16px; color: #888888; text-decoration: line-through; display: block; margin-bottom: 6px;">Total Nilai Kursus Asli: Rp 69.400.000</span>
-            <span style="font-size: 16px; color: #aaaaaa; text-decoration: line-through; display: block; margin-bottom: 15px;">Harga Normal Merdeka Saham: Rp 499.000</span>
+            <span style="font-size: 14px; color: #888888; text-decoration: line-through; display: block; margin-bottom: 6px;">Total Nilai Kursus Asli: Rp 69.400.000</span>
+            <span style="font-size: 14px; color: #aaaaaa; text-decoration: line-through; display: block; margin-bottom: 15px;">Harga Normal Merdeka Saham: Rp 499.000</span>
             
-            <span style="font-size: 16px; color: #ffffff; display: block; margin-bottom: 5px; font-weight: bold;">Harga Subsidi Merdeka Saham (Batch Minggu Ini):</span>
+            <span style="font-size: 15px; color: #ffffff; display: block; margin-bottom: 5px; font-weight: bold;">Harga Subsidi Merdeka Saham (Batch Minggu Ini):</span>
             
-            <span style="font-size: 46px; font-weight: 800; color: #e60000; display: inline-block; margin-bottom: 20px; animation: pulse-text 2s ease-in-out infinite;">Rp 177.000</span>
+            <span style="font-size: clamp(36px, 8vw, 46px); font-weight: 800; color: #e60000; display: inline-block; margin-bottom: 20px; animation: pulse-text 2s ease-in-out infinite;">Rp 177.000</span>
             
             <span style="font-size: 12px; color: #999999; display: block; line-height: 1.35; max-width: 550px; margin: 0 auto;">
                 (Kuota kapasitas Google Drive terbatas. Begitu kuota pendaftar minggu ini penuh, link pendaftaran akan ditutup selamanya demi keamanan server.)
             </span>
         </div>
 
-        <a href="https://easy-digital.myr.id/pl/merdeka-saham" style="display: inline-block; width: 100%; max-width: 550px; background-color: #e60000; color: #ffffff; text-decoration: none; padding: 20px 0; font-size: 18px; font-weight: bold; border-radius: 4px; animation: pulse 2s ease-in-out infinite; transition: transform 0.2s;">
+        <a href="https://easy-digital.myr.id/pl/merdeka-saham" style="display: inline-block; width: 100%; max-width: 550px; background-color: #e60000; color: #ffffff; text-decoration: none; padding: 20px 10px; font-size: clamp(15px, 4vw, 18px); font-weight: bold; border-radius: 4px; animation: pulse 2s ease-in-out infinite; transition: transform 0.2s; text-transform: uppercase;">
             🔥 SAYA SIAP AMBIL AKSES MERDEKA SAHAM SEKARANG
         </a>
     </div>
 </section>
+
+</body>
+</html>
