@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="id" style="scroll-behavior: smooth;">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <!-- TAG UTAMA UNTUK FIX MOBILE FRIENDLY -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Merdeka Saham</title>
-   <style>
+    <style>
+        /* --- RESET & UTILITIES --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: Arial, sans-serif; background-color: #111111; color: #ffffff; }
+
+        /* --- ANIMATIONS --- */
         @keyframes blinker { 50% { opacity: 0.1; } }
         @keyframes pulse {
             0% { transform: scale(1); box-shadow: 0 4px 15px rgba(230, 0, 0, 0.5); }
@@ -18,19 +22,131 @@
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
+
+        /* --- MARQUEE HEADER --- */
+        .alert-bar { background-color: #e60000; padding: 12px; overflow: hidden; }
+        .alert-marquee { 
+            color: #ffffff; 
+            text-align: center; 
+            font-size: 14px; 
+            font-weight: bold; 
+            letter-spacing: 1px; 
+            line-height: 1.25; 
+            display: block; 
+            animation: blinker 1.2s linear infinite; 
+        }
+
+        /* --- HERO SECTION --- */
+        .hero-section { padding: 60px 20px; text-align: center; }
+        .container-hero { max-width: 800px; margin: 0 auto; }
+        .hero-title { font-size: clamp(24px, 5vw, 36px); font-weight: 800; line-height: 1.25; margin-bottom: 25px; }
+        .hero-title span { color: #e60000; }
+        .hero-desc { font-size: clamp(14px, 3.5vw, 16px); line-height: 1.4; color: #cccccc; margin-bottom: 40px; }
+        .hero-image-wrapper { width: 100%; max-width: 800px; margin: 0 auto 40px auto; }
+        .hero-image-wrapper img { width: 100%; height: auto; display: block; border-radius: 6px; }
+        .hero-callout { 
+            font-size: clamp(13px, 3.5vw, 15px); 
+            line-height: 1.4; 
+            color: #dddddd; 
+            background-color: #161616; 
+            border-left: 4px solid #e60000; 
+            padding: 20px; 
+            text-align: left; 
+            margin-bottom: 40px; 
+            border-radius: 0 4px 4px 0; 
+        }
+        .btn-primary { 
+            display: inline-block; 
+            background-color: #e60000; 
+            color: #ffffff; 
+            text-decoration: none; 
+            padding: 18px 35px; 
+            font-size: clamp(15px, 4vw, 18px); 
+            font-weight: bold; 
+            border-radius: 4px; 
+            box-shadow: 0 4px 15px rgba(230, 0, 0, 0.4); 
+            text-transform: uppercase; 
+            width: 100%; 
+            max-width: 400px; 
+        }
+
+        /* --- PROBLEM SECTION --- */
+        .problem-section { background-color: #f9f9f9; color: #222222; padding: 60px 20px; }
+        .container-problem { max-width: 800px; margin: 0 auto; }
+        .problem-title { font-size: clamp(20px, 4.5vw, 28px); font-weight: 800; line-height: 1.25; text-align: center; margin-bottom: 35px; color: #111111; }
+        .problem-subtitle { font-size: 16px; line-height: 1.35; margin-bottom: 30px; text-align: center; font-weight: bold; color: #555555; }
+        .problem-card { background-color: #ffffff; border: 1px solid #e0e0e0; padding: 20px; margin-bottom: 20px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .problem-card strong { color: #e60000; font-size: 16px; display: block; margin-bottom: 8px; }
+        .problem-card span { font-size: 15px; line-height: 1.35; color: #444444; }
+
+        /* --- MANIFESTO SECTION --- */
+        .manifesto-section { padding: 60px 20px; text-align: center; }
+        .container-manifesto { max-width: 750px; margin: 0 auto; }
+        .manifesto-title { font-size: clamp(18px, 4.5vw, 26px); font-weight: 800; line-height: 1.25; color: #e60000; margin-bottom: 35px; }
+        .manifesto-text { font-style: italic; font-size: clamp(14px, 3.5vw, 16px); line-height: 1.4; color: #dddddd; text-align: justify; border-left: 4px solid #e60000; padding-left: 20px; }
+
+        /* --- TABLE SECTION --- */
+        .table-section { background-color: #ffffff; color: #222222; padding: 60px 20px; }
+        .container-table { max-width: 850px; margin: 0 auto; }
+        .table-title { font-size: clamp(20px, 4.5vw, 26px); font-weight: 800; line-height: 1.25; text-align: center; margin-bottom: 35px; color: #111111; }
+        .responsive-table { width: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 6px; overflow: hidden; }
+        .responsive-table table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+        .responsive-table thead tr { background-color: #111111; color: #ffffff; border-bottom: 2px solid #e60000; }
+        .responsive-table th { padding: 15px; font-weight: bold; }
+        .responsive-table th.col-price { text-align: center; width: 140px; }
+        .responsive-table tbody tr.row-odd { background-color: #fdfdfd; border-bottom: 1px solid #eeeeee; }
+        .responsive-table tbody tr.row-even { background-color: #ffffff; border-bottom: 1px solid #eeeeee; }
+        .responsive-table tbody tr.row-last-mentor { border-bottom: 2px solid #111111; }
+        .responsive-table td { padding: 15px; line-height: 1.35; color: #444444; }
+        .responsive-table td.cell-mentor { font-weight: bold; color: #111111; }
+        .responsive-table td.cell-mentor span { font-size: 12px; color: #666666; font-weight: normal; }
+        .responsive-table td.cell-price { text-align: center; color: #222222; font-weight: bold; font-size: 15px; }
         
-        /* RESPONSIVE TABLE FOR MOBILE */
+        /* TOTAL BOX STYLE */
+        .responsive-table tbody tr.total-row { background-color: #fff5f5; font-weight: bold; font-size: 15px; }
+        .responsive-table td.cell-total { padding: 12px; border: none; }
+        .total-value-box { border: 3px solid #e60000; padding: 15px; display: flex; justify-content: space-between; align-items: center; background-color: #ffffff; border-radius: 4px; animation: blinker 1s linear infinite; }
+        .total-value-box .label { color: #e60000; font-weight: 900; }
+        .total-value-box .price { color: #e60000; font-size: 22px; font-weight: 900; }
+
+        /* --- CHECKOUT SECTION --- */
+        .checkout-section { padding: 70px 20px; text-align: center; border-top: 1px solid #222222; }
+        .container-checkout { max-width: 700px; margin: 0 auto; }
+        .checkout-title { font-size: clamp(20px, 4.5vw, 26px); font-weight: 800; line-height: 1.25; margin-bottom: 25px; color: #ffffff; }
+        .alert-box { position: relative; border: 1.5px solid #e60000; background-color: #161616; padding: 25px 20px; border-radius: 6px; margin: 45px auto 35px auto; max-width: 650px; }
+        .alert-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background-color: #e60000; color: #ffffff; font-size: 11px; font-weight: bold; letter-spacing: 1.5px; padding: 4px 14px; border-radius: 20px; text-transform: uppercase; box-shadow: 0 2px 8px rgba(230, 0, 0, 0.4); }
+        .alert-text { color: #ffffff; font-weight: bold; font-size: 14px; letter-spacing: 0.5px; line-height: 1.45; margin: 0; }
+        .checkout-desc { font-size: 15px; line-height: 1.4; color: #cccccc; margin-bottom: 40px; text-align: justify; }
+        .pricing-card { background-color: #1a1a1a; border: 1px solid #333333; padding: 35px 25px; border-radius: 8px; margin-bottom: 35px; text-align: center; }
+        .price-anchor { font-size: 14px; color: #888888; text-decoration: line-through; display: block; margin-bottom: 6px; }
+        .price-normal { font-size: 14px; color: #aaaaaa; text-decoration: line-through; display: block; margin-bottom: 15px; }
+        .price-subsidy-label { font-size: 15px; color: #ffffff; display: block; margin-bottom: 5px; font-weight: bold; }
+        .price-final { font-size: clamp(36px, 8vw, 46px); font-weight: 800; color: #e60000; display: inline-block; margin-bottom: 20px; animation: pulse-text 2s ease-in-out infinite; }
+        .price-note { font-size: 12px; color: #999999; display: block; line-height: 1.35; max-width: 550px; margin: 0 auto; }
+        .btn-checkout { display: inline-block; width: 100%; max-width: 550px; background-color: #e60000; color: #ffffff; text-decoration: none; padding: 20px 10px; font-size: clamp(15px, 4vw, 18px); font-weight: bold; border-radius: 4px; animation: pulse 2s ease-in-out infinite; transition: transform 0.2s; text-transform: uppercase; }
+
+        /* ==========================================================================
+           ⚡ ATURAN RESPONSIVE MOBILE FRIENDLY (MAX 600PX)
+           ========================================================================== */
         @media screen and (max-width: 600px) {
-            .responsive-table table, .responsive-table thead, .responsive-table tbody, .responsive-table th, .responsive-table td, .responsive-table tr { 
+            /* Transformasi struktur tabel menjadi blok susun vertikal */
+            .responsive-table table, 
+            .responsive-table thead, 
+            .responsive-table tbody, 
+            .responsive-table th, 
+            .responsive-table td, 
+            .responsive-table tr { 
                 display: block; 
             }
+            
+            /* Sembunyikan header tabel bawaan desktop */
             .responsive-table thead tr { position: absolute; top: -9999px; left: -9999px; }
-            .responsive-table tr { border: 1px solid #333; margin-bottom: 10px; padding: 5px; background: #fff!important; }
-            .responsive-table td { border: none; position: relative; padding-left: 45%!important; text-align: left!important; }
             
-            /* KODE BARU 1: Perbaikan padding kotak total value di mobile */
-            .responsive-table tr.total-row-mobile td { padding-left: 12px!important; text-align: center!important; }
+            /* Desain ulang kartu tiap baris data mentor */
+            .responsive-table tr { border: 1px solid #333; margin-bottom: 10px; padding: 5px; background: #fff !important; }
+            .responsive-table td { border: none; position: relative; padding-left: 45% !important; text-align: left !important; }
             
+            /* Pembuat Label Kolom Kiri Kustom Otomatis */
             .responsive-table td:before { 
                 position: absolute; top: 15px; left: 15px; width: 40%; padding-right: 10px; 
                 white-space: nowrap; font-weight: bold; color: #111;
@@ -39,189 +155,177 @@
             .responsive-table td:nth-of-type(2):before { content: "Harga Asli"; }
             .responsive-table td:nth-of-type(3):before { content: "Isi Materi"; }
             
-            /* KODE BARU 2: Menghapus teks duplikasi "Mentor/Kelas" di baris total */
-            .responsive-table tr.total-row-mobile td:before { content: ""!important; }
-
-            .total-value-box { flex-direction: column; gap: 10px; text-align: center; }
+            /* PENGATURAN KHUSUS MOBILE: FIX KOTAK TOTAL VALUE */
+            .responsive-table tr.total-row { border: none; background: transparent !important; padding: 0; }
+            .responsive-table tr.total-row td { padding-left: 0 !important; text-align: center !important; }
+            .responsive-table tr.total-row td:before { content: "" !important; } /* Hapus teks "Mentor/Kelas" */
+            .total-value-box { flex-direction: column; gap: 10px; text-align: center; padding: 15px; }
         }
     </style>
 </head>
-<body style="font-family: Arial, sans-serif; background-color: #111111;">
+<body>
 
-<div style="background-color: #e60000; padding: 12px; overflow: hidden;">
-    <marquee scrollamount="6" behavior="scroll" direction="left" style="color: #ffffff; text-align: center; font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; letter-spacing: 1px; line-height: 1.25; display: block; animation: blinker 1.2s linear infinite;">
-        🚨 PERINGATAN: HALAMAN INI BISA DIHAPUS KAPAN SAJA JIKA MENDAPAT TEKANAN DARI PIHAK LUAR. AMANKAN AKSES ANDA SEKARANG. 🚨
-    </marquee>
-</div>
-
-<section style="background-color: #111111; color: #ffffff; padding: 60px 20px; text-align: center;">
-    <div style="max-width: 800px; margin: 0 auto;">
-        <h1 style="font-size: clamp(24px, 5vw, 36px); font-weight: 800; line-height: 1.25; color: #ffffff; margin-bottom: 25px;">
-            ILMU UNTUK KAYA ADALAH HAK SEMUA ORANG. KITA DIPAKSA MISKIN HANYA KARENA <span style="color: #e60000;">AKSES INFORMASI YANG MAHAL!</span>
-        </h1>
-        
-        <p style="font-size: clamp(14px, 3.5vw, 16px); line-height: 1.4; color: #cccccc; margin-bottom: 40px; text-align: center;">
-            Selamat datang di Merdeka Saham. Sebuah gerakan perlawanan terhadap monopoli informasi finansial. Kami membeli belasan kelas master saham top Indonesia seharga puluhan juta satu per satu, lalu menyatukannya ke dalam satu database terpusat dengan harga yang masuk akal untuk kantong rakyat.
-        </p>
-
-        <!-- HERO IMAGE IMPLEMENTATION -->
-        <div style="width: 100%; max-width: 800px; margin: 0 auto 40px auto;">
-            <img src="heroimage.png" alt="7 Database Mentorship Saham Terbesar di Indonesia" style="width: 100%; max-width: 100%; height: auto; display: block; border-radius: 6px;">
-        </div>
-
-        <p style="font-size: clamp(13px, 3.5vw, 15px); line-height: 1.4; color: #dddddd; background-color: #161616; border-left: 4px solid #e60000; padding: 20px; text-align: left; margin-bottom: 40px; border-radius: 0 4px 4px 0;">
-            Ini adalah 1 Link Akses (Google Drive) yang berisi ratusan video materi HD, draf modul, dari 7 mentorship saham termahal di Indonesia gratis update berkala seumur hidup.
-        </p>
-
-        <a href="#checkout" style="display: inline-block; background-color: #e60000; color: #ffffff; text-decoration: none; padding: 18px 35px; font-size: clamp(15px, 4vw, 18px); font-weight: bold; border-radius: 4px; box-shadow: 0 4px 15px rgba(230, 0, 0, 0.4); text-transform: uppercase; width: 100%; max-width: 400px;">
-            AMANKAN AKSES SEKARANG
-        </a>
+    <div class="alert-bar">
+        <span class="alert-marquee">
+            🚨 PERINGATAN: HALAMAN INI BISA DIHAPUS KAPAN SAJA JIKA MENDAPAT TEKANAN DARI PIHAK LUAR. AMANKAN AKSES ANDA SEKARANG. 🚨
+        </span>
     </div>
-</section>
 
-<section style="background-color: #f9f9f9; color: #222222; padding: 60px 20px;">
-    <div style="max-width: 800px; margin: 0 auto;">
-        <h2 style="font-size: clamp(20px, 4.5vw, 28px); font-weight: 800; line-height: 1.25; text-align: center; margin-bottom: 35px; color: #111111;">
-            Kenapa Akses Informasi Finansial yang Mengubah Hidup Selalu Dibatasi dengan Harga Mahal?
-        </h2>
-        
-        <p style="font-size: 16px; line-height: 1.35; margin-bottom: 30px; text-align: center; font-weight: bold; color: #555555;">
-            Sadar atau tidak, sistem ini sengaja dibuat tidak adil.
-        </p>
-
-        <div style="background-color: #ffffff; border: 1px solid #e0e0e0; padding: 20px; margin-bottom: 20px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
-            <strong style="color: #e60000; font-size: 16px; display: block; margin-bottom: 8px;">Tembok Finansial yang Nyata:</strong>
-            <span style="font-size: 15px; line-height: 1.35; color: #444444;">Anda ingin belajar saham untuk memperbaiki ekonomi keluarga, tetapi modal Anda dipaksa habis duluan hanya untuk membayar satu kelas mentorship yang harganya tidak masuk akal.</span>
-        </div>
-
-        <div style="background-color: #ffffff; border: 1px solid #e0e0e0; padding: 20px; margin-bottom: 20px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
-            <strong style="color: #e60000; font-size: 16px; display: block; margin-bottom: 8px;">Menjadi 'Makanan' Bandar:</strong>
-            <span style="font-size: 15px; line-height: 1.35; color: #444444;">Karena tidak mampu membeli kelas mahal, Anda akhirnya trading modal nekat, mengandalkan rumor gratisan di media sosial, dan berakhir boncos kehilangan tabungan.</span>
-        </div>
-
-        <div style="background-color: #ffffff; border: 1px solid #e0e0e0; padding: 20px; margin-bottom: 20px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
-            <strong style="color: #e60000; font-size: 16px; display: block; margin-bottom: 8px;">Monopoli Informasi:</strong>
-            <span style="font-size: 15px; line-height: 1.35; color: #444444;">Yang kaya makin kaya karena memegang informasi valid, sementara pemula dibiarkan terjebak dalam spekulasi tanpa tahu strategi aslinya.</span>
-        </div>
-    </div>
-</section>
-
-<section style="background-color: #111111; color: #ffffff; padding: 60px 20px; text-align: center;">
-    <div style="max-width: 750px; margin: 0 auto;">
-        <h2 style="font-size: clamp(18px, 4.5vw, 26px); font-weight: 800; line-height: 1.25; color: #e60000; margin-bottom: 35px;">
-            "Saya Membeli Semua Kelas Mahal Ini Satu per Satu Menggunakan Uang Saya Sendiri, Agar Anda Tidak Perlu Bangkrut Duluan."
-        </h2>
-        
-        <div style="font-style: italic; font-size: clamp(14px, 3.5vw, 16px); line-height: 1.4; color: #dddddd; text-align: justify; border-left: 4px solid #e60000; padding-left: 20px;">
-            "Saya pernah berada di posisi Anda. Bingung, frustrasi, dan merasa dunia ini tidak adil karena ilmu untuk merdeka secara finansial sengaja dipagari oleh harga tinggi.<br><br>
-            Itulah alasan kenapa saya mengorbankan modal saya sendiri untuk mengumpulkan, merapikan, dan menyatukan seluruh kurikulum master saham papan atas Indonesia ke dalam satu database terpusat.<br><br>
-            Ini adalah gerakan perlawanan agar knowledge mahal bisa diakses oleh semua lapisan masyarakat, bahkan yang bergaji UMR sekalipun! Saya sedih melihat banyak orang pintar dan pekerja keras tetap miskin hanya karena mereka tidak punya akses ke strategi aslinya. Hari ini, saya serahkan kuncinya kepada Anda."
-        </div>
-    </div>
-</section>
-
-<section style="background-color: #ffffff; color: #222222; padding: 60px 20px;">
-    <div style="max-width: 850px; margin: 0 auto;">
-        <h2 style="font-size: clamp(20px, 4.5vw, 26px); font-weight: 800; line-height: 1.25; text-align: center; margin-bottom: 35px; color: #111111;">
-            Apa Saja Kurikulum Senilai Puluhan Juta yang Akan Anda Dapatkan Hari Ini?
-        </h2>
-        <div class="responsive-table" style="width: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 6px;">
-            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px;">
-                <thead>
-                    <tr style="background-color: #111111; color: #ffffff; border-bottom: 2px solid #e60000;">
-                        <th style="padding: 15px; font-weight: bold;">Nama Mentor / Kelas</th>
-                        <th style="padding: 15px; font-weight: bold; text-align: center; width: 140px;">Harga Asli Kelas</th>
-                        <th style="padding: 15px; font-weight: bold;">Isi Materi & Value di Dalam Database</th>
-                    </tr>
-                </thead>
-                <tbody>
-    <tr style="background-color: #fdfdfd; border-bottom: 1px solid #eeeeee;">
-        <td style="padding: 15px; font-weight: bold; color: #111111;">Hengky Adinata<br><span style="font-size:12px; color:#666666; font-weight:normal;">(Remora Trader)</span></td>
-        <td style="padding: 15px; text-align: center; color: #222222; font-weight: bold; font-size: 15px;">Rp 19.000.000</td>
-        <td style="padding: 15px; line-height: 1.35; color: #444444;">Strategi mendeteksi pergerakan bandar secara presisi, <em>tape reading</em>, dan manajemen risiko trading harian kilat.</td>
-    </tr>
-    <tr style="background-color: #ffffff; border-bottom: 1px solid #eeeeee;">
-        <td style="padding: 15px; font-weight: bold; color: #111111;">David Noah<br><span style="font-size:12px; color:#666666; font-weight:normal;">(Fortis Circle)</span></td>
-        <td style="padding: 15px; text-align: center; color: #222222; font-weight: bold; font-size: 15px;">Rp 14.000.000</td>
-        <td style="padding: 15px; line-height: 1.35; color: #444444;">Analisis makro ekonomi global, cara menyaring saham <em>multi-bagger</em>, dan psikologi <em>position sizing</em> skala besar.</td>
-    </tr>
-    <tr style="background-color: #fdfdfd; border-bottom: 1px solid #eeeeee;">
-        <td style="padding: 15px; font-weight: bold; color: #111111;">Andry Hakim<br><span style="font-size:12px; color:#666666; font-weight:normal;">(Masterclass Saham)</span></td>
-        <td style="padding: 15px; text-align: center; color: #222222; font-weight: bold; font-size: 15px;">Rp 13.000.000</td>
-        <td style="padding: 15px; line-height: 1.35; color: #444444;">Panduan komprehensif <em>value investing</em>, strategi berburu saham <em>multi-bagger</em> berpotensi tinggi, dan analisis rahasia <em>backdoor listing</em> di pasar modal Indonesia.</td>
-    </tr>
-    <tr style="background-color: #ffffff; border-bottom: 1px solid #eeeeee;">
-        <td style="padding: 15px; font-weight: bold; color: #111111;">Bennix<br><span style="font-size:12px; color:#666666; font-weight:normal;">(Sekolah Saham)</span></td>
-        <td style="padding: 15px; text-align: center; color: #222222; font-weight: bold; font-size: 15px;">Rp 9.000.000</td>
-        <td style="padding: 15px; line-height: 1.35; color: #444444;">Fondasi dasar pasar modal untuk pemula, membaca laporan keuangan emiten, dan membongkar jebakan pom-pom saham.</td>
-    </tr>
-    <tr style="background-color: #fdfdfd; border-bottom: 1px solid #eeeeee;">
-        <td style="padding: 15px; font-weight: bold; color: #111111;">Erose Perwita<br><span style="font-size:12px; color:#666666; font-weight:normal;">(The Investor)</span></td>
-        <td style="padding: 15px; text-align: center; color: #222222; font-weight: bold; font-size: 15px;">Rp 7.400.000</td>
-        <td style="padding: 15px; line-height: 1.35; color: #444444;">Metode <em>value investing</em> murni, menghitung nilai intrinsik saham <em>undervalued</em>, dan strategi <em>swing trading</em> santai.</td>
-    </tr>
-    <tr style="background-color: #ffffff; border-bottom: 1px solid #eeeeee;">
-        <td style="padding: 15px; font-weight: bold; color: #111111;">Midas Cuan</td>
-        <td style="padding: 15px; text-align: center; color: #222222; font-weight: bold; font-size: 15px;">Rp 5.000.000</td>
-        <td style="padding: 15px; line-height: 1.35; color: #444444;">Teknik <em>screening</em> saham gorengan yang aman, membaca momentum pasar, dan <em>chart pattern</em> siap pakai.</td>
-    </tr>
-    <tr style="background-color: #fdfdfd; border-bottom: 2px solid #111111;">
-        <td style="padding: 15px; font-weight: bold; color: #111111;">Ellen May<br><span style="font-size:12px; color:#666666; font-weight:normal;">(EMVEST)</span></td>
-        <td style="padding: 15px; text-align: center; color: #222222; font-weight: bold; font-size: 15px;">Rp 2.000.000</td>
-        <td style="padding: 15px; line-height: 1.35; color: #444444;">Manajemen emosi saat <em>market crash</em>, analisis teknikal praktis untuk pemula, dan <em>trading plan</em> harian.</td>
-    </tr>
-    <tr class="total-row-mobile" style="background-color: #fff5f5; font-weight: bold; font-size: 15px;">
-    <td colspan="3" style="padding: 12px; border: none;">
-        <div class="total-value-box" style="border: 3px solid #e60000; padding: 15px; display: flex; justify-content: space-between; align-items: center; background-color: #ffffff; border-radius: 4px; animation: blinker 1s linear infinite;">
-            <span style="color: #e60000; font-weight: 900;">TOTAL VALUE</span>
-            <span style="color: #e60000; font-size: 22px; font-weight: 900;">Rp 69.400.000</span>
-        </div>
-    </td>
-</tr>
-</tbody>
-            </table>
-        </div>
-    </div>
-</section>
-
-<section id="checkout" style="background-color: #111111; color: #ffffff; padding: 70px 20px; text-align: center; border-top: 1px solid #222222;">
-    <div style="max-width: 700px; margin: 0 auto;">
-        
-        <h2 style="font-size: clamp(20px, 4.5vw, 26px); font-weight: 800; line-height: 1.25; margin-bottom: 25px; color: #ffffff;">
-            Investasi Kecil untuk Perubahan Hidup Terbesar Anda
-        </h2>
-
-        <div style="position: relative; border: 1.5px solid #e60000; background-color: #161616; padding: 25px 20px; border-radius: 6px; margin: 45px auto 35px auto; max-width: 650px;">
-            <div style="position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background-color: #e60000; color: #ffffff; font-size: 11px; font-weight: bold; letter-spacing: 1.5px; padding: 4px 14px; border-radius: 20px; text-transform: uppercase; box-shadow: 0 2px 8px rgba(230, 0, 0, 0.4);">
-                ⚡ PERINGATAN
-            </div>
-            <p style="color: #ffffff; font-weight: bold; font-size: 14px; letter-spacing: 0.5px; line-height: 1.45; margin: 0;">
-                "GERAKAN INI HANYA UNTUK ORANG YANG SERIUS INGIN MENGUBAH NASIB FINANSIALNYA."
+    <section class="hero-section">
+        <div class="container-hero">
+            <h1 class="hero-title">
+                ILMU UNTUK KAYA ADALAH HAK SEMUA ORANG. KITA DIPAKSA MISKIN HANYA KARENA <span>AKSES INFORMASI YANG MAHAL!</span>
+            </h1>
+            
+            <p class="hero-desc">
+                Selamat datang di Merdeka Saham. Sebuah gerakan perlawanan terhadap monopoli informasi finansial. Kami membeli belasan kelas master saham top Indonesia seharga puluhan juta satu per satu, lalu menyatukannya ke dalam satu database terpusat dengan harga yang masuk akal untuk kantong rakyat.
             </p>
-        </div>
-        
-        <p style="font-size: 15px; line-height: 1.4; color: #cccccc; margin-bottom: 40px; text-align: justify;">
-            Jika Anda sudah mapan atau punya uang puluhan juta untuk dibuang, silakan beli kelas aslinya. Tempat ini adalah jalan rahasia bagi para petarung jalanan yang ingin merdeka finansial menggunakan ilmu para master saham dengan modal minim.
-        </p>
 
-        <div style="background-color: #1a1a1a; border: 1px solid #333333; padding: 35px 25px; border-radius: 8px; margin-bottom: 35px; text-align: center;">
-            <span style="font-size: 14px; color: #888888; text-decoration: line-through; display: block; margin-bottom: 6px;">Total Nilai Kursus Asli: Rp 69.400.000</span>
-            <span style="font-size: 14px; color: #aaaaaa; text-decoration: line-through; display: block; margin-bottom: 15px;">Harga Normal Merdeka Saham: Rp 499.000</span>
-            
-            <span style="font-size: 15px; color: #ffffff; display: block; margin-bottom: 5px; font-weight: bold;">Harga Subsidi Merdeka Saham (Batch Minggu Ini):</span>
-            
-            <span style="font-size: clamp(36px, 8vw, 46px); font-weight: 800; color: #e60000; display: inline-block; margin-bottom: 20px; animation: pulse-text 2s ease-in-out infinite;">Rp 177.000</span>
-            
-            <span style="font-size: 12px; color: #999999; display: block; line-height: 1.35; max-width: 550px; margin: 0 auto;">
-                (Kuota kapasitas Google Drive terbatas. Begitu kuota pendaftar minggu ini penuh, link pendaftaran akan ditutup selamanya demi keamanan server.)
-            </span>
-        </div>
+            <div class="hero-image-wrapper">
+                <img src="heroimage.png" alt="7 Database Mentorship Saham Terbesar di Indonesia">
+            </div>
 
-        <a href="https://easy-digital.myr.id/pl/merdeka-saham" style="display: inline-block; width: 100%; max-width: 550px; background-color: #e60000; color: #ffffff; text-decoration: none; padding: 20px 10px; font-size: clamp(15px, 4vw, 18px); font-weight: bold; border-radius: 4px; animation: pulse 2s ease-in-out infinite; transition: transform 0.2s; text-transform: uppercase;">
-            🔥 SAYA SIAP AMBIL AKSES MERDEKA SAHAM SEKARANG
-        </a>
-    </div>
-</section>
+            <p class="hero-callout">
+                Ini adalah 1 Link Akses (Google Drive) yang berisi ratusan video materi HD, draf modul, dari 7 mentorship saham termahal di Indonesia gratis update berkala seumur hidup.
+            </p>
+
+            <a href="#checkout" class="btn-primary"> AMANKAN AKSES SEKARANG </a>
+        </div>
+    </section>
+
+    <section class="problem-section">
+        <div class="container-problem">
+            <h2 class="problem-title">
+                Kenapa Akses Informasi Finansial yang Mengubah Hidup Selalu Dibatasi dengan Harga Mahal?
+            </h2>
+            
+            <p class="problem-subtitle">Sadar atau tidak, sistem ini sengaja dibuat tidak adil.</p>
+
+            <div class="problem-card">
+                <strong>Tembok Finansial yang Nyata:</strong>
+                <span>Anda ingin belajar saham untuk memperbaiki ekonomi keluarga, tetapi modal Anda dipaksa habis duluan hanya untuk membayar satu kelas mentorship yang harganya tidak masuk akal.</span>
+            </div>
+
+            <div class="problem-card">
+                <strong>Menjadi 'Makanan' Bandar:</strong>
+                <span>Karena tidak mampu membeli kelas mahal, Anda akhirnya trading modal nekat, mengandalkan rumor gratisan di media sosial, dan berakhir boncos kehilangan tabungan.</span>
+            </div>
+
+            <div class="problem-card">
+                <strong>Monopoli Informasi:</strong>
+                <span>Yang kaya makin kaya karena memegang informasi valid, sementara pemula dibiarkan terjebak dalam spekulasi tanpa tahu strategi aslinya.</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="manifesto-section">
+        <div class="container-manifesto">
+            <h2 class="manifesto-title">
+                "Saya Membeli Semua Kelas Mahal Ini Satu per Satu Menggunakan Uang Saya Sendiri, Agar Anda Tidak Perlu Bangkrut Duluan."
+            </h2>
+            
+            <div class="manifesto-text">
+                "Saya pernah berada di posisi Anda. Bingung, frustrasi, dan merasa dunia ini tidak adil karena ilmu untuk merdeka secara finansial sengaja dipagari oleh harga tinggi.<br><br>
+                Itulah alasan kenapa saya mengorbankan modal saya sendiri untuk mengumpulkan, merapikan, dan menyatukan seluruh kurikulum master saham papan atas Indonesia ke dalam satu database terpusat.<br><br>
+                Ini adalah gerakan perlawanan agar knowledge mahal bisa diakses oleh semua lapisan masyarakat, bahkan yang bergaji UMR sekalipun! Saya sedih melihat banyak orang pintar dan pekerja keras tetap miskin hanya karena mereka tidak punya akses ke strategi aslinya. Hari ini, saya serahkan kuncinya kepada Anda."
+            </div>
+        </div>
+    </section>
+
+    <section class="table-section">
+        <div class="container-table">
+            <h2 class="table-title">
+                Apa Saja Kurikulum Senilai Puluhan Juta yang Akan Anda Dapatkan Hari Ini?
+            </h2>
+            <div class="responsive-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nama Mentor / Kelas</th>
+                            <th class="col-price">Harga Asli Kelas</th>
+                            <th>Isi Materi & Value di Dalam Database</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="row-odd">
+                            <td class="cell-mentor">Hengky Adinata<br><span>(Remora Trader)</span></td>
+                            <td class="cell-price">Rp 19.000.000</td>
+                            <td>Strategi mendeteksi pergerakan bandar secara presisi, <em>tape reading</em>, dan manajemen risiko trading harian kilat.</td>
+                        </tr>
+                        <tr class="row-even">
+                            <td class="cell-mentor">David Noah<br><span>(Fortis Circle)</span></td>
+                            <td class="cell-price">Rp 14.000.000</td>
+                            <td>Analisis makro ekonomi global, cara menyaring saham <em>multi-bagger</em>, dan psikologi <em>position sizing</em> skala besar.</td>
+                        </tr>
+                        <tr class="row-odd">
+                            <td class="cell-mentor">Andry Hakim<br><span>(Masterclass Saham)</span></td>
+                            <td class="cell-price">Rp 13.000.000</td>
+                            <td>Panduan komprehensif <em>value investing</em>, strategi berburu saham <em>multi-bagger</em> berpotensi tinggi, dan analisis rahasia <em>backdoor listing</em> di pasar modal Indonesia.</td>
+                        </tr>
+                        <tr class="row-even">
+                            <td class="cell-mentor">Bennix<br><span>(Sekolah Saham)</span></td>
+                            <td class="cell-price">Rp 9.000.000</td>
+                            <td>Fondasi dasar pasar modal untuk pemula, membaca laporan keuangan emiten, dan membongkar jebakan pom-pom saham.</td>
+                        </tr>
+                        <tr class="row-odd">
+                            <td class="cell-mentor">Erose Perwita<br><span>(The Investor)</span></td>
+                            <td class="cell-price">Rp 7.400.000</td>
+                            <td>Metode <em>value investing</em> murni, menghitung nilai intrinsik saham <em>undervalued</em>, dan strategi <em>swing trading</em> santai.</td>
+                        </tr>
+                        <tr class="row-even">
+                            <td class="cell-mentor">Midas Cuan</td>
+                            <td class="cell-price">Rp 5.000.000</td>
+                            <td>Teknik <em>screening</em> saham gorengan yang aman, membaca momentum pasar, dan <em>chart pattern</em> siap pakai.</td>
+                        </tr>
+                        <tr class="row-odd row-last-mentor">
+                            <td class="cell-mentor">Ellen May<br><span>(EMVEST)</span></td>
+                            <td class="cell-price">Rp 2.000.000</td>
+                            <td>Manajemen emosi saat <em>market crash</em>, analisis teknikal praktis untuk pemula, dan <em>trading plan</em> harian.</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="3" class="cell-total">
+                                <div class="total-value-box">
+                                    <span class="label">TOTAL VALUE</span>
+                                    <span class="price">Rp 69.400.000</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="checkout" class="checkout-section">
+        <div class="container-checkout">
+            <h2 class="checkout-title">Investasi Kecil untuk Perubahan Hidup Terbesar Anda</h2>
+
+            <div class="alert-box">
+                <div class="alert-badge">⚡ PERINGATAN</div>
+                <p class="alert-text">
+                    "GERAKAN INI HANYA UNTUK ORANG YANG SERIUS INGIN MENGUBAH NASIB FINANSIALNYA."
+                </p>
+            </div>
+            
+            <p class="checkout-desc">
+                Jika Anda sudah mapan atau punya uang puluhan juta untuk dibuang, silakan beli kelas aslinya. Tempat ini adalah jalan rahasia bagi para petarung jalanan yang ingin merdeka finansial menggunakan ilmu para master saham dengan modal minim.
+            </p>
+
+            <div class="pricing-card">
+                <span class="price-anchor">Total Nilai Kursus Asli: Rp 69.400.000</span>
+                <span class="price-normal">Harga Normal Merdeka Saham: Rp 499.000</span>
+                <span class="price-subsidy-label">Harga Subsidi Merdeka Saham (Batch Minggu Ini):</span>
+                <span class="price-final">Rp 177.000</span>
+                <span class="price-note">
+                    (Kuota kapasitas Google Drive terbatas. Begitu kuota pendaftar minggu ini penuh, link pendaftaran akan ditutup selamanya demi keamanan server.)
+                </span>
+            </div>
+
+            <a href="https://easy-digital.myr.id/pl/merdeka-saham" class="btn-checkout">
+                🔥 SAYA SIAP AMBIL AKSES MERDEKA SAHAM SEKARANG
+            </a>
+        </div>
+    </section>
 
 </body>
 </html>
