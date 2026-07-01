@@ -31,6 +31,7 @@
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
+        @keyframes blinker { 50% { opacity: 0.1; } }
         @keyframes pulse {
             0% { transform: scale(1); box-shadow: 0 4px 15px rgba(230, 0, 0, 0.5); }
             50% { transform: scale(1.03); box-shadow: 0 6px 22px rgba(230, 0, 0, 0.7); }
@@ -42,23 +43,25 @@
             100% { transform: scale(1); }
         }
 
-        /* --- MARQUEE HEADER --- */
-.alert-bar { 
-    background-color: #e60000; 
-    padding: 12px; 
-    overflow: hidden; 
-    white-space: nowrap; /* WAJIB: Supaya teks panjangnya memanjang ke samping, bukan turun ke bawah */
-}
-.alert-marquee { 
-    color: #ffffff; 
-    font-size: 14px; 
-    font-weight: bold; 
-    letter-spacing: 1px; 
-    line-height: 1.25; 
-    display: inline-block; /* WAJIB: Harus inline-block agar transform translateX bisa jalan */
-    padding-left: 100%;    /* Memulai teks dari batas kanan layar */
-    animation: marquee 15s linear infinite; /* Memanggil nama @keyframes marquee yang kamu buat */
-}
+        /* --- MARQUEE HEADER (FIXED & CLEANED) --- */
+        .alert-bar { 
+            background-color: #e60000; 
+            padding: 14px 0; 
+            overflow: hidden; 
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+        .alert-marquee { 
+            color: #ffffff; 
+            font-size: 14px; 
+            font-weight: bold; 
+            letter-spacing: 1px; 
+            line-height: 1; 
+            white-space: nowrap;
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
 
         /* --- HERO SECTION --- */
         .hero-section { padding: 60px 20px; text-align: center; }
@@ -153,7 +156,6 @@
            ⚡ ATURAN RESPONSIVE MOBILE FRIENDLY (MAX 600PX)
            ========================================================================== */
         @media screen and (max-width: 600px) {
-            /* Transformasi struktur tabel menjadi blok susun vertikal */
             .responsive-table table, 
             .responsive-table thead, 
             .responsive-table tbody, 
@@ -163,14 +165,11 @@
                 display: block; 
             }
             
-            /* Sembunyikan header tabel bawaan desktop */
             .responsive-table thead tr { position: absolute; top: -9999px; left: -9999px; }
             
-            /* Desain ulang kartu tiap baris data mentor */
             .responsive-table tr { border: 1px solid #333; margin-bottom: 10px; padding: 5px; background: #fff !important; }
             .responsive-table td { border: none; position: relative; padding-left: 45% !important; text-align: left !important; }
             
-            /* Pembuat Label Kolom Kiri Kustom Otomatis */
             .responsive-table td:before { 
                 position: absolute; top: 15px; left: 15px; width: 40%; padding-right: 10px; 
                 white-space: nowrap; font-weight: bold; color: #111;
@@ -179,10 +178,9 @@
             .responsive-table td:nth-of-type(2):before { content: "Harga Asli"; }
             .responsive-table td:nth-of-type(3):before { content: "Isi Materi"; }
             
-            /* PENGATURAN KHUSUS MOBILE: FIX KOTAK TOTAL VALUE */
             .responsive-table tr.total-row { border: none; background: transparent !important; padding: 0; }
             .responsive-table tr.total-row td { padding-left: 0 !important; text-align: center !important; }
-            .responsive-table tr.total-row td:before { content: "" !important; } /* Hapus teks "Mentor/Kelas" */
+            .responsive-table tr.total-row td:before { content: "" !important; }
             .total-value-box { flex-direction: column; gap: 10px; text-align: center; padding: 15px; }
         }
     </style>
@@ -198,7 +196,7 @@
     <section class="hero-section">
         <div class="container-hero">
             <h1 class="hero-title">
-                ILMU UNTUK KAYA ADALAH HAK SEMUA ORANG. KITA DIPAKSA MISKIN HANYA KARENA <span>AKSES INFORMASI YANG MAHAL!</span>
+                ILMU UNTUK KAYA ADALAH HAK SEMA ORANG. KITA DIPAKSA MISKIN HANYA KARENA <span>AKSES INFORMASI YANG MAHAL!</span>
             </h1>
             
             <p class="hero-desc">
