@@ -28,8 +28,8 @@
 
         /* --- ANIMATIONS --- */
         @keyframes marquee {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
+            0% { transform: translateX(90vw); } /* Teks langsung muncul pas di tepi kanan layar ponsel saat di-load */
+            100% { transform: translateX(-100%); } /* Berjalan habis ke ujung kiri */
         }
         @keyframes pulse {
             0% { transform: scale(1); box-shadow: 0 4px 15px rgba(230, 0, 0, 0.5); }
@@ -60,7 +60,7 @@
             line-height: 1; 
             white-space: nowrap;
             display: inline-block;
-            animation: marquee 25s linear infinite !important;
+            animation: marquee 18s linear infinite !important; /* Kecepatan pas untuk kenyamanan mata membaca */
         }
 
         /* --- HERO SECTION --- */
@@ -129,7 +129,7 @@
         .responsive-table td.cell-mentor span { font-size: 12px; color: #666666; font-weight: normal; }
         .responsive-table td.cell-price { text-align: center; color: #222222; font-weight: bold; font-size: 15px; }
         
-        /* TOTAL BOX STYLE (Blinker dibuang karena bikin bug glitch layar) */
+        /* TOTAL BOX STYLE */
         .responsive-table tbody tr.total-row { background-color: #fff5f5; font-weight: bold; font-size: 15px; }
         .responsive-table td.cell-total { padding: 12px; border: none; }
         .total-value-box { border: 3px solid #e60000; padding: 15px; display: flex; justify-content: space-between; align-items: center; background-color: #ffffff; border-radius: 4px; }
@@ -245,7 +245,7 @@
             </h2>
             
             <div class="manifesto-text">
-                "Saya pernah berada di posisi Anda. Bingung, frustrasi, dan merasa dunia ini tidak adil karena ilmu untuk merdeka secara finansial sengaja dipagari oleh harga tinggi.<br><br>
+                "Saya pernah berada di posisi Anda. Bingung, frustrasi, and merasa dunia ini tidak adil karena ilmu untuk merdeka secara finansial sengaja dipagari oleh harga tinggi.<br><br>
                 Itulah alasan kenapa saya mengorbankan modal saya sendiri untuk mengumpulkan, merapikan, dan menyatukan seluruh kurikulum master saham papan atas Indonesia ke dalam satu database terpusat.<br><br>
                 Ini adalah gerakan perlawanan agar knowledge mahal bisa diakses oleh semua lapisan masyarakat, bahkan yang bergaji UMR sekalipun! Saya sedih melihat banyak orang pintar dan pekerja keras tetap miskin hanya karena mereka tidak punya akses ke strategi aslinya. Hari ini, saya serahkan kuncinya kepada Anda."
             </div>
